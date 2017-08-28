@@ -130,9 +130,16 @@ public class Transactions implements Serializable{
     /**
      * Field to contain the date on which transaction is made
      */
-    @Column(name = "Date_of_Transaction")
-    private Date dot;
+    @JoinColumn(name = "Date_of_Transaction")
+    private String dot;
 
+    public String getDot() {
+        return dot;
+    }
+
+    public void setDot(String dot) {
+        this.dot = dot;
+    }
 
     /**
      * Field to contain the date on which transaction is last modified
@@ -230,14 +237,7 @@ public class Transactions implements Serializable{
         this.mop = mop;
         this.lender = lender;
         this.borrower = borrower;
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-        Date dateOfTrans;
-        try {
-            dateOfTrans = df.parse(dot);
-           this.dot = dateOfTrans;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        this.dot = dot;
     }
 
     /**

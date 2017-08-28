@@ -14,6 +14,7 @@ import demosplitwise.demo.domain.Transactions;
 import demosplitwise.demo.repositories.TransRepository;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -151,6 +152,8 @@ public class TransactionController {
     @RequestMapping("/transaction/findById")
     public Transactions findById(@RequestParam("transId") long id) {
         Transactions transaction = transRepository.findOne(id);
+//        transaction.setDot(new Date());
+        System.out.print(transaction.getDot());
         transaction.setLender(allLenders(id));
         transaction.setBorrower(allBorrowers(id));
         return transaction;
@@ -169,9 +172,9 @@ public class TransactionController {
     }
 
     @RequestMapping("/transaction/findAllByUserId")
-    public List<Transactions> findAllByUserId(@RequestParam("userId") long id) {
+    public List<Transactions> findAllByUserId(@RequestParam("userId") long userId) {
         List<Transactions> mylist = new ArrayList();
-        for (UserTransaction userTransaction : userTransactionRepository.findByUserId(id)) {
+        for (UserTransaction userTransaction : userTransactionRepository.findByUserId(userId)) {
             Transactions transaction = transRepository.findOne(userTransaction.getTransID());
             transaction.setLender(allLenders(transaction.getTransID()));
             transaction.setBorrower(allBorrowers(transaction.getTransID()));
