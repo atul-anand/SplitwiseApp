@@ -241,11 +241,7 @@ public class Transactions implements Serializable{
         this.mop = mop;
         this.lender = lender;
         this.borrower = borrower;
-<<<<<<< HEAD
         this.dot = dot;
-=======
-        this.dot =dot;
->>>>>>> upstream/master
     }
 
     /**
