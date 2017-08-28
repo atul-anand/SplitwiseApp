@@ -100,7 +100,7 @@ public class Transactions implements Serializable{
      * @return amount
      */
     public double getAmount() {
-        return amount;
+        return Math.round(amount*100.00)/100;
     }
 
 
@@ -130,7 +130,10 @@ public class Transactions implements Serializable{
     /**
      * Field to contain the date on which transaction is made
      */
-    @JoinColumn(name = "Date_of_Transaction")
+
+   // @Column(name = "Date_of_Transaction")
+    @JoinColumn(name="Date_of_Transaction")
+
     private String dot;
 
     public String getDot() {
@@ -228,6 +231,7 @@ public class Transactions implements Serializable{
      * @param borrower list of all the borrower user ids
      * @param mop mode of payment of the transaction
      */
+
     public Transactions(long groupId, String description, double amount,List<Long> lender, List<Long> borrower,String mop,String dot){
 
 
@@ -237,7 +241,11 @@ public class Transactions implements Serializable{
         this.mop = mop;
         this.lender = lender;
         this.borrower = borrower;
+<<<<<<< HEAD
         this.dot = dot;
+=======
+        this.dot =dot;
+>>>>>>> upstream/master
     }
 
     /**
