@@ -131,8 +131,8 @@ public class Transactions implements Serializable{
      * Field to contain the date on which transaction is made
      */
 
-   // @Column(name = "Date_of_Transaction")
-    @JoinColumn(name="Date_of_Transaction")
+  
+    @Column(name="Date_of_Transaction")
 
     private String dot;
 
