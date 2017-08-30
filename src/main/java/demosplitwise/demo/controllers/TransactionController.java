@@ -33,7 +33,7 @@ public class TransactionController {
 
 
     @RequestMapping(value = "/transaction/save", method = RequestMethod.POST)
-    public void save(@RequestBody Transactions transactions) {
+    public Transactions save(@RequestBody Transactions transactions) {
         transRepository.save(transactions);
         List<Long> newList = new ArrayList<>();
         newList.addAll(transactions.lender);
@@ -77,6 +77,7 @@ public class TransactionController {
 
             }
         }
+        return transactions;
     }
 
     @RequestMapping(value = "/transaction/update", method = RequestMethod.PUT)
